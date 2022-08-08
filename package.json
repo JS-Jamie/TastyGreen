@@ -1,0 +1,22 @@
+{
+  "name": "tastygreen",
+  "version": "1.0.0",
+  "description": "MERN shopping cart app",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JS-Jamie/TastyGreen.git"
+  },
+  "author": "Jamie Shin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JS-Jamie/TastyGreen/issues"
+  },
+  "homepage": "https://github.com/JS-Jamie/TastyGreen#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
