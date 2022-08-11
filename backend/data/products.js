@@ -1,6 +1,5 @@
 const products = [
   {
-    _id: '1',
     name: 'BadaBean BadaBoom',
     image: '/images/BadaBean.png',
     description: 'Vegan snack',
@@ -10,7 +9,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: '2',
     name: 'Beyondchipz',
     image: '/images/BeyondChips.png',
     description: 'Vegan snack',
@@ -20,7 +18,6 @@ const products = [
     numReviews: 8,
   },
   {
-    _id: '3',
     name: 'Daily Crunch',
     image: '/images/dailyCrunch.png',
     description: 'Vegan snack',
@@ -30,7 +27,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: '4',
     name: 'Earth Balance Vegan Cheddar Squares',
     image: '/images/earthBalance.png',
     description: 'Vegan snack',
@@ -40,7 +36,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: '5',
     name: "Emmy's Coconut Cookies",
     image: '/images/emmys.png',
     description: 'Vegan snack',
@@ -50,7 +45,6 @@ const products = [
     numReviews: 10,
   },
   {
-    _id: '6',
     name: 'Gorager Project Cheezy Greens',
     image: '/images/Forager.png',
     description: 'Vegan snack',
