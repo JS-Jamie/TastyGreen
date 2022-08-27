@@ -10,6 +10,7 @@ router.get(
   '/',
   asyncHandler(async (req, res) => {
     const products = await Product.find({});
+    //throw new Error("Some error")   ---Enable this code just to test PRODUCT_LIST-FAIL
     res.json(products);
   })
 );
