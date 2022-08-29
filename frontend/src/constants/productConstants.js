@@ -7,3 +7,4 @@ export const PRODUCT_DETAILS_SUCCESS = 'PRODUCT_DETAILS_SUCCESS';
 export const PRODUCT_DETAILS_FAIL = 'PRODUCT_DETAILS_FAIL';
 
 //First, add constants. After adding constants, add them to productReducer.js file
+//productConstant->productReducer->store->productAction
