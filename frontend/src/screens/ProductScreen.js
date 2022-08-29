@@ -10,7 +10,6 @@ import { listProductDetails } from '../actions/productActions';
 const ProductScreen = () => {
   const dispatch = useDispatch();
   const params = useParams();
-
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails; //destructuring
 
