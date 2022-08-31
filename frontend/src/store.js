@@ -16,6 +16,7 @@ const reducer = combineReducers({
 const cartItemsFromStorage = localStorage.getItem('cartItems')
   ? JSON.parse(localStorage.getItem('cartItems'))
   : [];
+
 const initialState = {
   cart: { cartItems: cartItemsFromStorage },
 }; //this is where I get cart items, token, user, etc. in initial state
