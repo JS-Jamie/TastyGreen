@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import FormContainer from '../components/FormContainer';
 import CheckoutSteps from '../components/CheckoutSteps';
 import { saveShippingAddress } from '../actions/cartActions';
 
-const ShippingScreen = ({ history }) => {
+const ShippingScreen = () => {
   const cart = useSelector((state) => state.cart);
 
   const { shippingAddress } = cart;
@@ -18,7 +18,6 @@ const ShippingScreen = ({ history }) => {
   const [country, setCountry] = useState(shippingAddress.country);
 
   const dispatch = useDispatch();
-  console.log(shippingAddress);
 
   const submitHandler = (e) => {
     e.preventDefault();
