@@ -27,8 +27,14 @@ const OrderScreen = () => {
   }
 
   useEffect(() => {
-    dispatch(getOrderDetails(orderId));
-  }, []);
+    if (!order || order._id !== orderId) {
+      dispatch(getOrderDetails(orderId));
+    }
+  }, [order, orderId]);
+  /*This above checks if there is any order 
+  or(||) if the order ID matches the ID in the URL. 
+  If it does not, then dispatch getOrderDetails() 
+  to fetch the most recent order. */
 
   return loading ? (
     <Loader />
