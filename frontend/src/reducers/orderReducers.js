@@ -30,8 +30,11 @@ export const orderCreateReducer = (state = {}, action) => {
 };
 
 export const orderDetailsReducer = (
-  state = { orderItems: [], shippingAddress: {} },
+  state = { loading: true, orderItems: [], shippingAddress: {} },
   action
+  // There were some issues where it's trying
+  // to load the order before loading was true (line #41)
+  // so set it as a default state  true as shown above (line #33).
 ) => {
   switch (action.type) {
     case ORDER_DETAILS_REQUEST:
