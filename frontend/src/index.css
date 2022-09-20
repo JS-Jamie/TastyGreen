@@ -19,3 +19,8 @@ h2 {
 .rating span {
   margin: 0.1 rem;
 }
+
+.snackImagePlaceOrder {
+  max-width: 150%;
+  height: auto;
+}
