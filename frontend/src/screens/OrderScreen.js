@@ -30,7 +30,8 @@ const OrderScreen = () => {
     if (!order || order._id !== orderId) {
       dispatch(getOrderDetails(orderId));
     }
-  }, [order, orderId]);
+  }, [dispatch, order, orderId]);
+  //For the last part, it could be [dispatch, orderId]
   /*This above checks if there is any order 
   or(||) if the order ID matches the ID in the URL. 
   If it does not, then dispatch getOrderDetails() 
