@@ -49,10 +49,11 @@ const OrderScreen = () => {
     };
 
     if (!order || successPay) {
+      console.log('successPay:', successPay);
       dispatch({ type: ORDER_PAY_RESET }); //Loop prevention. Without this(line#52), it will keep refreshing once it's paid
-      if (!order || order._id !== orderId) {
-        dispatch(getOrderDetails(orderId));
-      }
+      // if (!order || order._id !== orderId) {
+      dispatch(getOrderDetails(orderId));
+      // }
     } else if (!order.isPaid) {
       if (!window.paypal) {
         addPayPalScript();
