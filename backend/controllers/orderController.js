@@ -83,6 +83,7 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
 //@access    Private
 const getMyOrders = asyncHandler(async (req, res) => {
   const orders = await Order.find({ user: req.user._id });
+  //'find'(because i need to find more than one. Finding the orders where the user is equals to the req.use._id (=only the logged in useres) )
   res.json(orders);
 });
 
