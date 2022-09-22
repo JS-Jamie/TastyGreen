@@ -27,8 +27,6 @@ const CartScreen = () => {
 
   const { cartItems } = cart;
 
-  console.log(cartItems);
-
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
