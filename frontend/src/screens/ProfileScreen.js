@@ -157,6 +157,7 @@ const ProfileScreen = () => {
                       </Button>
                     </LinkContainer>
                   </td>
+                  git
                 </tr>
               ))}
             </tbody>
