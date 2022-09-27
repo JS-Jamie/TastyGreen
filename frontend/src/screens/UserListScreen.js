@@ -9,11 +9,23 @@ import { listUsers } from '../actions/userActions';
 
 const UserListScreen = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const userList = useSelector((state) => state.userList);
   const { loading, error, users } = userList;
 
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
   useEffect(() => {
+    if (userInfo && userInfo.isAdmin) {
+      dispatch(listUsers());
+    } else {
+      navigate('/login');
+    }
+    /* This if else statement above will fix the issue where a non-admin 
+user sees non-admin error message when they manually go to "/admin/userlist". 
+This will redirect them to the homepage or login page (if not logged in). */
     dispatch(listUsers());
   }, [dispatch]);
 
