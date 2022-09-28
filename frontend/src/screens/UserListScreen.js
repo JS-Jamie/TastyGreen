@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Table, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
@@ -29,7 +29,7 @@ const UserListScreen = () => {
     /* This if else statement above will fix the issue where a non-admin 
 user sees non-admin error message when they manually go to "/admin/userlist". 
 This will redirect them to the homepage or login page (if not logged in). */
-  }, [dispatch, successDelete]);
+  }, [navigate, dispatch, successDelete, userInfo]);
 
   const deleteHandler = (id) => {
     if (window.confirm('Are you sure')) {
@@ -71,7 +71,7 @@ This will redirect them to the homepage or login page (if not logged in). */
                   )}
                 </td>
                 <td>
-                  <LinkContainer to={`/user/${user._id}/edit`}>
+                  <LinkContainer to={`/admin/user/${user._id}/edit`}>
                     <Button variant='light' className='btn-sm'>
                       <i className='fas fa-edit'></i>
                     </Button>
