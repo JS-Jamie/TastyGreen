@@ -5,7 +5,7 @@ import { Table, Button, Row, Col } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
-import { listProducts } from '../actions/productActions';
+import { listProducts, deleteProduct } from '../actions/productActions';
 
 const ProductListScreen = () => {
   const dispatch = useDispatch();
@@ -14,6 +14,15 @@ const ProductListScreen = () => {
 
   const productList = useSelector((state) => state.productList);
   const { loading, error, products } = productList;
+
+  const productDelete = useSelector((state) => state.productDelete);
+  const {
+    loading: loadingDelete,
+    error: errorDelete,
+    success: successDelete,
+  } = productDelete;
+  // To get success value from productDelete state.
+  // Pass successDelete as dependancy to useEffect.
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -27,11 +36,11 @@ const ProductListScreen = () => {
     /* This if else statement above will fix the issue where a non-admin 
 user sees non-admin error message when they manually go to "/admin/productlist". 
 This will redirect them to the homepage or login page (if not logged in). */
-  }, [navigate, dispatch, userInfo]);
+  }, [navigate, dispatch, userInfo, successDelete]);
 
   const deleteHandler = (id) => {
     if (window.confirm('Are you sure')) {
-      // DELETE PRODUCTS
+      dispatch(deleteProduct(id));
     }
   };
 
@@ -51,7 +60,8 @@ This will redirect them to the homepage or login page (if not logged in). */
           </Button>
         </Col>
       </Row>
-
+      {loadingDelete && <Loader />}
+      {errorDelete && <Message variant='danger'>{errorDelete}</Message>}
       {loading ? (
         <Loader />
       ) : error ? (
