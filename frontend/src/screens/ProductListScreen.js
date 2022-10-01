@@ -1,16 +1,20 @@
 import React, { useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Table, Button, Row, Col } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
-import { listProducts, deleteProduct } from '../actions/productActions';
+import {
+  listProducts,
+  deleteProduct,
+  createProduct,
+} from '../actions/productActions';
+import { PRODUCT_CREATE_RESET } from '../constants/productConstants';
 
 const ProductListScreen = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const params = useParams();
 
   const productList = useSelector((state) => state.productList);
   const { loading, error, products } = productList;
@@ -22,21 +26,39 @@ const ProductListScreen = () => {
     success: successDelete,
   } = productDelete;
   // To get success value from productDelete state.
-  // Pass successDelete as dependancy to useEffect.
+  // Pass successDelete in as dependancy to useEffect.
+
+  const productCreate = useSelector((state) => state.productCreate);
+  const {
+    loading: loadingCreate,
+    error: errorCreate,
+    success: successCreate,
+    product: createdProduct,
+  } = productCreate;
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
   useEffect(() => {
-    if (userInfo && userInfo.isAdmin) {
-      dispatch(listProducts());
-    } else {
+    dispatch({ type: PRODUCT_CREATE_RESET });
+
+    if (!userInfo.isAdmin) {
       navigate('/login');
     }
-    /* This if else statement above will fix the issue where a non-admin 
-user sees non-admin error message when they manually go to "/admin/productlist". 
-This will redirect them to the homepage or login page (if not logged in). */
-  }, [navigate, dispatch, userInfo, successDelete]);
+
+    if (successCreate) {
+      navigate(`/admin/product/${createdProduct._id}/edit`);
+    } else {
+      dispatch(listProducts());
+    }
+  }, [
+    dispatch,
+    navigate,
+    userInfo,
+    successDelete,
+    successCreate,
+    createdProduct,
+  ]);
 
   const deleteHandler = (id) => {
     if (window.confirm('Are you sure')) {
@@ -44,8 +66,8 @@ This will redirect them to the homepage or login page (if not logged in). */
     }
   };
 
-  const createProductHandler = (product) => {
-    // CREATE PRODUCT
+  const createProductHandler = () => {
+    dispatch(createProduct());
   };
 
   return (
@@ -62,6 +84,10 @@ This will redirect them to the homepage or login page (if not logged in). */
       </Row>
       {loadingDelete && <Loader />}
       {errorDelete && <Message variant='danger'>{errorDelete}</Message>}
+
+      {loadingCreate && <Loader />}
+      {errorCreate && <Message variant='danger'>{errorCreate}</Message>}
+
       {loading ? (
         <Loader />
       ) : error ? (
