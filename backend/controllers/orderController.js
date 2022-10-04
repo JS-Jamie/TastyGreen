@@ -87,6 +87,21 @@ const getMyOrders = asyncHandler(async (req, res) => {
   res.json(orders);
 });
 
-export { addOrderItems, getOrderById, updateOrderToPaid, getMyOrders };
+//@desc    Get all orders
+//@route    GET /api/orders
+//@access    Private / Admin only
+const getOrders = asyncHandler(async (req, res) => {
+  const orders = await Order.find({}).populate('user', 'id name');
+  //'find'(because i need to find more than one. Finding the orders where the user is equals to the req.use._id (=only the logged in useres) )
+  res.json(orders);
+});
+
+export {
+  addOrderItems,
+  getOrderById,
+  updateOrderToPaid,
+  getMyOrders,
+  getOrders,
+};
 
 //update Routes after this
