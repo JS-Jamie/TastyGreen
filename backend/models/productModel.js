@@ -4,6 +4,12 @@ const reviewSchema = mongoose.Schema(
     name: { type: String, required: true },
     rating: { type: Number, required: true },
     comment: { type: String, required: true },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: 'User',
+    } /* This makes a user associated with the review,
+    preventing the same user writing comments more than once.*/,
   },
   {
     timestamps: true,
