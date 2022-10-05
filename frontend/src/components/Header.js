@@ -24,7 +24,7 @@ const Header = () => {
           <Navbar.Brand as={Link} to='/'>
             TastyGreen
           </Navbar.Brand>
-          {/* https://stackoverflow.com/questions/70090030/is-there-a-solution-for-linkcontainer-component-from-react-router-bootstrap-erro */}
+          {/*LinkContainer issue ---  https://stackoverflow.com/questions/70090030/is-there-a-solution-for-linkcontainer-component-from-react-router-bootstrap-erro */}
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='ms-auto'>
@@ -51,6 +51,38 @@ const Header = () => {
                 <Nav.Link as={Link} to='/login'>
                   <i className='fas fa-user'></i> Sign In
                 </Nav.Link>
+              )}
+
+              {userInfo && userInfo.isAdmin && (
+                <NavDropdown title='Admin' id='adminmenu'>
+                  <NavDropdown.Item>
+                    <Nav.Link
+                      as={Link}
+                      to='/admin/userlist'
+                      style={{ color: 'black' }}
+                    >
+                      Users
+                    </Nav.Link>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item>
+                    <Nav.Link
+                      as={Link}
+                      to='/admin/productlist'
+                      style={{ color: 'black' }}
+                    >
+                      Products
+                    </Nav.Link>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item>
+                    <Nav.Link
+                      as={Link}
+                      to='/admin/orderlist'
+                      style={{ color: 'black' }}
+                    >
+                      Orders
+                    </Nav.Link>
+                  </NavDropdown.Item>
+                </NavDropdown>
               )}
             </Nav>
           </Navbar.Collapse>

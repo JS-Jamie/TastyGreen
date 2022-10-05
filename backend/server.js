@@ -1,3 +1,5 @@
+import path from 'path';
+//this above is just node js work module to work with file path
 import express from 'express';
 import dotenv from 'dotenv';
 import colors from 'colors';
@@ -7,6 +9,7 @@ import connectDB from './config/db.js';
 import productRoutes from './routes/productRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
+import uploadRoutes from './routes/uploadRoutes.js';
 
 dotenv.config();
 
@@ -23,10 +26,16 @@ app.get('/', (req, res) => {
 app.use('/api/products', productRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/orders', orderRoutes);
+app.use('/api/upload', uploadRoutes);
 
 app.get('/api/config/paypal', (req, res) => {
   res.send(process.env.PAYPAL_CLIENT_ID);
 });
+
+const __dirname = path.resolve();
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
+//The uploads folder (in the root) will not be excessible by default. Need to make the folder static.
+//This code above makes the uploads folder static
 
 app.use(notFound);
 

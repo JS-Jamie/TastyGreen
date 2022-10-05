@@ -78,6 +78,24 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
   }
 });
 
+//@desc    Update order to "Delivered"
+//@route    GET /api/orders/:id/deliver
+//@access    Private/Admin only
+const updateOrderToDelivered = asyncHandler(async (req, res) => {
+  const order = await Order.findById(req.params.id);
+
+  if (order) {
+    order.isDelivered = true; //it's false by default. so need to set it to true.
+    order.deliveredAt = Date.now();
+
+    const updatedOrder = await order.save();
+    res.json(updatedOrder);
+  } else {
+    res.status(404);
+    throw new Error('Order not found');
+  }
+});
+
 //@desc    Get logged in user orders
 //@route    GET /api/orders/myorders
 //@access    Private
@@ -87,6 +105,22 @@ const getMyOrders = asyncHandler(async (req, res) => {
   res.json(orders);
 });
 
-export { addOrderItems, getOrderById, updateOrderToPaid, getMyOrders };
+//@desc    Get all orders
+//@route    GET /api/orders
+//@access    Private / Admin only
+const getOrders = asyncHandler(async (req, res) => {
+  const orders = await Order.find({}).populate('user', 'id name');
+  //'find'(because i need to find more than one. Finding the orders where the user is equals to the req.use._id (=only the logged in useres) )
+  res.json(orders);
+});
+
+export {
+  addOrderItems,
+  getOrderById,
+  updateOrderToPaid,
+  updateOrderToDelivered,
+  getMyOrders,
+  getOrders,
+};
 
 //update Routes after this
