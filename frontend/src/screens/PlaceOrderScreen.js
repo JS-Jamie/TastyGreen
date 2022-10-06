@@ -1,14 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import {
-  Button,
-  Row,
-  Col,
-  ListGroup,
-  Image,
-  Card,
-  ListGroupItem,
-} from 'react-bootstrap';
+import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
 import CheckoutSteps from '../components/CheckoutSteps';
@@ -43,7 +35,7 @@ const PlaceOrderScreen = () => {
     if (success) {
       navigate(`/order/${order._id}`);
     }
-  }, [navigate, success]);
+  }, [navigate, success, order._id]);
 
   /*Place Order button will fire off 
 the placeOrderHandler below which will 
