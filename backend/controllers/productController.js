@@ -5,7 +5,16 @@ import Product from '../models/productModel.js';
 //@route    GET /api/products
 //@access    Public
 const getProducts = asyncHandler(async (req, res) => {
-  const products = await Product.find({});
+  const keyword = req.query.keyword
+    ? {
+        name: {
+          $regex: req.query.keyword,
+          $options: 'i',
+        },
+        // the 'i' means case-insensitive
+      }
+    : {};
+  const products = await Product.find({ ...keyword });
   //throw new Error("Some error")   ---Enable this code just to test PRODUCT_LIST-FAIL
 
   res.json(products);

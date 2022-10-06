@@ -5,6 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { NavDropdown } from 'react-bootstrap';
+import SearchBox from './SearchBox';
 import { logout } from '../actions/userActions';
 
 const Header = () => {
@@ -27,6 +28,8 @@ const Header = () => {
           {/*LinkContainer issue ---  https://stackoverflow.com/questions/70090030/is-there-a-solution-for-linkcontainer-component-from-react-router-bootstrap-erro */}
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
+            {/* <Route render={() => <SearchBox />} /> */}
+            <SearchBox />
             <Nav className='ms-auto'>
               <Nav.Link as={Link} to='/cart'>
                 <i className='fas fa-shopping-cart'></i> Cart
