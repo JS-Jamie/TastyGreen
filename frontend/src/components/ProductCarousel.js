@@ -5,16 +5,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import Loader from './Loader';
 import Message from './Message';
 import { listTopProducts } from '../actions/productActions';
+import useWindowDimensions from '../utils/useWindowResize';
 
 const ProductCarousel = () => {
   const dispatch = useDispatch();
 
   const productTopRated = useSelector((state) => state.productTopRated);
   const { loading, error, products } = productTopRated;
+  const { height, width } = useWindowDimensions();
 
   useEffect(() => {
     dispatch(listTopProducts());
   }, [dispatch]);
+
+  if (width < 992) {
+    return null;
+  }
 
   return loading ? (
     <Loader />
