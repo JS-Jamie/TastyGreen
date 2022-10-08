@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
@@ -10,6 +10,7 @@ import { logout } from '../actions/userActions';
 
 const Header = () => {
   const dispatch = useDispatch();
+  const [keyword, setKeyword] = useState('');
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -29,7 +30,7 @@ const Header = () => {
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
             {/* <Route render={() => <SearchBox />} /> */}
-            <SearchBox />
+            <SearchBox keyword={keyword} setKeyword={setKeyword} />
             <Nav className='ms-auto'>
               <Nav.Link as={Link} to='/cart'>
                 <i className='fas fa-shopping-cart'></i> Cart

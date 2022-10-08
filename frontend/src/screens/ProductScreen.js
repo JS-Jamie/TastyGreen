@@ -87,7 +87,7 @@ const ProductScreen = () => {
                 <ListGroup.Item>
                   <Rating
                     value={product.rating}
-                    text={`${product.numReviews}reviews`}
+                    text={`${product.numReviews} reviews`}
                   />
                 </ListGroup.Item>
                 <ListGroup.Item>Price: ${product.price}</ListGroup.Item>
@@ -143,7 +143,7 @@ const ProductScreen = () => {
                   <ListGroup.Item>
                     <Button
                       onClick={addToCartHandler}
-                      className='btn-block'
+                      className='btn-block add-to-cart'
                       type='button'
                       disabled={product.countInStock === 0}
                     >
@@ -156,20 +156,21 @@ const ProductScreen = () => {
           </Row>
           <Row>
             <Col md={6}>
-              <h2>Reviews</h2>
+              <h2 className='reviews'>Reviews</h2>
               {product.reviews.length === 0 && <Message>No Reviews</Message>}
               <ListGroup variant='flush'>
                 {product.reviews.map((review) => (
                   <ListGroup.Item key={review._id}>
                     <strong>{review.name}</strong>
                     <Rating value={review.rating} />
-                    <p>{review.createdAt.substring(0, 10)}</p>
-                    <p>{review.comment}</p>
+                    <p className='review-date'>
+                      {review.createdAt.substring(0, 10)}
+                    </p>
+                    <p className='actual-comment'>{review.comment}</p>
                   </ListGroup.Item>
                 ))}
-
+                <h2 className='reviews'>Write a Customer Review</h2>
                 <ListGroup.Item>
-                  <h2>Write a Customer Review</h2>
                   {errorProductReview && (
                     <Message variant='danger'>{errorProductReview}</Message>
                   )}
@@ -191,7 +192,9 @@ const ProductScreen = () => {
                         </Form.Control>
                       </Form.Group>
                       <Form.Group controlId='comment'>
-                        <Form.Label>Comment</Form.Label>
+                        <Form.Label className='write-comment'>
+                          Comment
+                        </Form.Label>
                         <Form.Control
                           as='textarea'
                           row='3'
@@ -199,7 +202,11 @@ const ProductScreen = () => {
                           onChange={(e) => setComment(e.target.value)}
                         ></Form.Control>
                       </Form.Group>
-                      <Button type='submit' variant='primary'>
+                      <Button
+                        className='submit-comment'
+                        type='submit'
+                        variant='primary'
+                      >
                         Submit
                       </Button>
                     </Form>

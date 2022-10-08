@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
-const SearchBox = () => {
-  const [keyword, setKeyword] = useState('');
+const SearchBox = (props) => {
+  const { keyword, setKeyword } = props;
 
   const navigate = useNavigate();
 

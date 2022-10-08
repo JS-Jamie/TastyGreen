@@ -62,7 +62,8 @@ h2 {
 
 .carousel-caption h2 {
   color: #fff;
-  font-size: calc(1.325rem + 0.1vw) !important;
+  font-size: calc(1.1rem + 0.1vw) !important;
+  padding-top: 0;
 }
 
 .carousel-inner {
@@ -75,8 +76,34 @@ h2 {
 
 .carousel img {
   /* height: 230px; */
-  height: 35vh;
+  height: 38vh;
   padding: 3%;
-  margin-top: 3%;
+  margin-top: 2%;
   /* margin: 0 20%; */
+}
+
+/*Product Screen*/
+button.btn-block.add-to-cart.btn.btn-primary {
+  width: 100%;
+}
+
+h2.reviews {
+  margin-top: 16px;
+  margin-bottom: 0;
+}
+
+p.review-date {
+  margin-bottom: 4px;
+}
+
+p.actual-comment {
+  margin-bottom: 4px;
+}
+
+label.write-comment.form-label {
+  margin-top: 7px;
+}
+
+button.submit-comment.btn.btn-primary {
+  margin-top: 14px;
 }
