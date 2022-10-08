@@ -1,19 +1,25 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { NavDropdown } from 'react-bootstrap';
+import { NavDropdown, Button } from 'react-bootstrap';
 import SearchBox from './SearchBox';
 import { logout } from '../actions/userActions';
 
 const Header = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [keyword, setKeyword] = useState('');
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
+
+  const onClickHandler = () => {
+    setKeyword('');
+    navigate('/');
+  };
 
   const logoutHandler = () => {
     dispatch(logout());
@@ -23,9 +29,9 @@ const Header = () => {
     <header>
       <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>
         <Container>
-          <Navbar.Brand as={Link} to='/'>
+          <Button onClick={onClickHandler} className='TastyGreen-button'>
             TastyGreen
-          </Navbar.Brand>
+          </Button>
           {/*LinkContainer issue ---  https://stackoverflow.com/questions/70090030/is-there-a-solution-for-linkcontainer-component-from-react-router-bootstrap-erro */}
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>

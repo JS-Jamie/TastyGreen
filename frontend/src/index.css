@@ -35,6 +35,22 @@ h2 {
   background-color: #86c4ba !important;
 }
 
+/*Header*/
+button.TastyGreen-button.btn.btn-primary {
+  font-size: 1.25rem;
+  background-color: #86c4ba;
+  border-color: #86c4ba;
+  border: 0;
+  outline: 0;
+}
+
+button.TastyGreen-button.btn.btn-primary:focus {
+  background-color: #86c4ba;
+  border-color: #86c4ba;
+  border: 0;
+  outline: 0;
+  box-shadow: none;
+}
 /*Pagination*/
 .active.page-item.active .page-link {
   background-color: #86c4ba !important;
