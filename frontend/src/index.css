@@ -51,6 +51,21 @@ button.TastyGreen-button.btn.btn-primary:focus {
   outline: 0;
   box-shadow: none;
 }
+
+button.search-button.btn.btn-secondary {
+  background-color: #86c4ba;
+  border-color: #eceeef;
+  margin-left: 10px;
+}
+
+button.search-button.btn.btn-secondary:hover {
+  background-color: rgb(0 0 0 / 8%);
+}
+
+button.search-button.btn.btn-secondary:focus {
+  box-shadow: none;
+}
+
 /*Pagination*/
 .active.page-item.active .page-link {
   background-color: #86c4ba !important;
