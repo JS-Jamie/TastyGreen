@@ -18,7 +18,6 @@ const addOrderItems = asyncHandler(async (req, res) => {
   if (orderItems && orderItems.length === 0) {
     res.status(400);
     throw new Error('No order items');
-    return;
   } else {
     const order = new Order({
       orderItems,
@@ -55,7 +54,7 @@ const getOrderById = asyncHandler(async (req, res) => {
 });
 
 //@desc    Update order to "Paid"
-//@route    GET /api/orders/:id/pay
+//@route    PUT /api/orders/:id/pay
 //@access    Private
 const updateOrderToPaid = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id);
@@ -79,7 +78,7 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
 });
 
 //@desc    Update order to "Delivered"
-//@route    GET /api/orders/:id/deliver
+//@route    PUT /api/orders/:id/deliver
 //@access    Private/Admin only
 const updateOrderToDelivered = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id);

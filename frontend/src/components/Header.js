@@ -30,7 +30,7 @@ const Header = () => {
       <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>
         <Container>
           <Button onClick={onClickHandler} className='TastyGreen-button'>
-            TastyGreen
+            🐢 TastyGreen
           </Button>
           {/*LinkContainer issue ---  https://stackoverflow.com/questions/70090030/is-there-a-solution-for-linkcontainer-component-from-react-router-bootstrap-erro */}
           <Navbar.Toggle aria-controls='basic-navbar-nav' />

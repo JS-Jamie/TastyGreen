@@ -109,7 +109,8 @@ const CartScreen = () => {
                 Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)})
                 items
               </h2>
-              {/* acc=accumulator The starting point for the accumulator above is set to 0*/}
+              {/* acc=accumulator 
+              The starting point for the accumulator above is set to 0*/}
               $
               {cartItems
                 .reduce((acc, item) => acc + item.qty * item.price, 0)

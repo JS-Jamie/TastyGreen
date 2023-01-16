@@ -37,7 +37,8 @@ app.get('/api/config/paypal', (req, res) => {
 
 const __dirname = path.resolve();
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
-//The uploads folder (in the root) will not be excessible by default. Need to make the folder static.
+//The uploads folder (in the root) will not be accessible by default.
+//Need to make the folder static.
 //This code above makes the uploads folder static
 
 if (process.env.NODE_ENV === 'production') {

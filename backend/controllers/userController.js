@@ -81,7 +81,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
 //@access    Private
 const updateUserProfile = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
-  //request.user = the one who is currently logged in
+  //request.user._id = the one who is currently logged in
 
   if (user) {
     user.name = req.body.name || user.name;
