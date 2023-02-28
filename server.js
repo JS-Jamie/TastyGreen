@@ -1,5 +1,6 @@
 import path from 'path';
 //this above is just node js work module to work with file path
+import { fileURLToPath } from 'url';
 import express from 'express';
 import dotenv from 'dotenv';
 import colors from 'colors';
@@ -11,6 +12,9 @@ import productRoutes from './routes/productRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
 import uploadRoutes from './routes/uploadRoutes.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 dotenv.config();
 
@@ -35,17 +39,18 @@ app.get('/api/config/paypal', (req, res) => {
   res.send(process.env.PAYPAL_CLIENT_ID);
 });
 
-const __dirname = path.resolve();
+// const __dirname = path.resolve();
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 //The uploads folder (in the root) will not be accessible by default.
 //Need to make the folder static.
 //This code above makes the uploads folder static
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, './frontend/build')));
+  app.use(express.static(path.join(__dirname, 'public')));
 
   app.get('*', (req, res) =>
-    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
+    // res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
+    res.sendFile(path.join(__dirname, 'public') + '/index.html')
   );
 } else {
   app.get('/', (req, res) => {
