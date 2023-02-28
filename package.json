@@ -10,7 +10,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "build-client": "cd ./frontend && npm install && npm run build"
+    "build": "cd frontend && npm install --legacy-peer-deps && npm run build"
   },
   "repository": {
     "type": "git",
