@@ -4,9 +4,6 @@
   "description": "MERN shopping cart app",
   "main": "server.js",
   "type": "module",
-  "engines": {
-    "node": "16"
-  },
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
