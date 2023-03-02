@@ -6,23 +6,24 @@ TastyGreen is a MERN eCommerce application for farmers who’d like to sell thei
 ![gifOfHomePage](https://media.giphy.com/media/RqnsCfuw2vDC48N4t9/giphy.gif)
 
 
-
 ### :star2: Features and Functionalities
 * Full featured shopping cart
 * Product rating & review system
 * Top products carousel
 * Product pagination
 * Product search feature
+* JWT authentication (JSON web tokens)
 * New user registration
 * User profile with orders
 * Admin area to manage customers, products & orders
 * Mark orders as delivered option
 * Checkout process (shipping, payment method, etc)
-* PayPal / credit card integration
-* Custom database seeder script
+* PayPal API
+* Custom authentication middleware
+* Custom error handler
 
 
-### :computer: Tech/Framework Used
+### :computer: Tech/Framework/Libraries Used
 * React with Functional Components & Hooks
 * React router
 * React-Bootstrap UI library
@@ -30,12 +31,7 @@ TastyGreen is a MERN eCommerce application for farmers who’d like to sell thei
 * Redux state in components (useDispatch & useSelector)
 * Node
 * Express
-* MongoDB database and the Mongoose ODM
-* JWT authentication (JSON web tokens)
-* Custom authentication middleware
-* Custom error handler
-* PayPal API
-* Environment variables
+* MongoDB and Mongoose
 
 
 ### :page_with_curl: API Endpoints
