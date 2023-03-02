@@ -34,5 +34,3 @@ TastyGreen is a MERN eCommerce application for farmers who’d like to sell thei
 * MongoDB and Mongoose
 
 
-### :page_with_curl: API Endpoints
-...
