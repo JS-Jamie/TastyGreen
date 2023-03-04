@@ -32,6 +32,7 @@ Check out the website [**here**](https://tastygreen-js-jamie.koyeb.app/) :)
 * Redux state in components (useDispatch & useSelector)
 * Node
 * Express
-* MongoDB and Mongoose
+* MongoDB
+* Mongoose
 
 
