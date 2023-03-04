@@ -1,7 +1,8 @@
 # TastyGreen
 
-TastyGreen is a MERN eCommerce application for farmers who’d like to sell their vegetables to local customers directly. Customers can register and login to order veggies and write reviews.  The application is made with React, Redux, Node, Express & MongoDB.
+TastyGreen is a MERN eCommerce application for farmers who would like to sell their vegetables directly to local customers. Customers can register and log in to order veggies using their PayPal account or credit card. They can also write reviews. The admin person can log in to update product details, user list, and delivery status.
 
+Check out the website [**here**](https://tastygreen-js-jamie.koyeb.app/) :)
 
 ![gifOfHomePage](https://media.giphy.com/media/RqnsCfuw2vDC48N4t9/giphy.gif)
 
